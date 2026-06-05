@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visualisasi Navigasi Objek Menggunakan Dijkstra dan Bezier Curve</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="splash">
+  <h1>Visualisasi Navigasi Objek</h1>
+  <h2>MEMUAT SISTEM DIJKSTRA DAN BEZIER CURVE...</h2>
+  <div class="loader"><div class="fill"></div></div>
+</div>
+
+<div id="canvas-container">
+  <canvas id="bgCanvas"></canvas>
+  <canvas id="fgCanvas"></canvas>
+</div>
+
+<div id="toolbar">
+  <h3>DIJKSTRA & BEZIER CURVE</h3>
+  <div class="tb-sep"></div>
+  <button class="tb-btn" id="btnNewMap">Buat Ulang Peta</button>
+  <button class="tb-btn" id="btnRandSE">Acak Rute</button>
+  <button class="tb-btn" id="btnSetPoints">Pilih Titik</button>
+  <div class="tb-sep"></div>
+  <button class="tb-btn green" id="btnRun">Cari Rute</button>
+  <button class="tb-btn green" id="btnTrack">Start Track</button>
+  <button class="tb-btn red" id="btnReset">Hapus Rute</button>
+  <div class="tb-sep"></div>
+  <button class="tb-btn" id="btnFit">Pusat Kamera</button>
+  <button class="tb-btn" id="btnZoomIn">Zoom In</button>
+  <button class="tb-btn" id="btnZoomOut">Zoom Out</button>
+</div>
+
+
+<div id="statusBar">Memuat visualisasi navigasi objek...</div>
+<div class="hint">Drag: geser peta &nbsp;|&nbsp; Scroll: zoom</div>
+
+<script src="js/map/map-image.js"></script>
+<script src="js/map/map-nodes.js"></script>
+
+<script src="js/core/MinHeap.js"></script>
+<script src="js/core/Graph.js"></script>
+<script src="js/core/Dijkstra.js"></script>
+<script src="js/utils/bezier.js"></script>
+<script src="js/city/CustomCity.js"></script>
+<script src="js/render/Renderer.js"></script>
+<script src="js/app/App.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
+

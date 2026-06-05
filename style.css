@@ -1,0 +1,48 @@
+:root { --panel-bg: rgba(20, 30, 48, 0.96); --border: rgba(255,255,255,0.12); }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { overflow:hidden; background:#2f3640; font-family:'Segoe UI',system-ui,sans-serif; user-select:none; }
+#canvas-container { position:relative; width:100vw; height:100vh; }
+canvas { position:absolute; top:0; left:0; }
+#bgCanvas { z-index:1; }
+#fgCanvas { z-index:2; cursor:grab; }
+#fgCanvas:active { cursor:grabbing; }
+
+#splash {
+    position:fixed; inset:0; z-index:9999; background:#0f172a;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    transition:opacity 0.35s ease;
+}
+#splash h1 { color:#fff; font-size:34px; font-weight:800; margin-bottom:8px; }
+#splash h2 { color:#4ade80; font-size:14px; letter-spacing:3px; margin-bottom:28px; }
+#splash .loader { width:280px; height:6px; background:rgba(255,255,255,0.1); border-radius:6px; overflow:hidden; }
+#splash .fill { height:100%; background:linear-gradient(90deg,#3b82f6,#22c55e); border-radius:6px; animation:fillBar 0.55s ease-out forwards; }
+@keyframes fillBar { 0%{width:0} 100%{width:100%} }
+#splash.hide { opacity:0; pointer-events:none; }
+
+#toolbar {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:var(--panel-bg); backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+    display:flex; align-items:center; gap:8px; padding:10px 18px;
+    flex-wrap:nowrap; overflow-x:auto;
+}
+#toolbar h3 { color:#fff; font-size:15px; font-weight:800; white-space:nowrap; margin-right:8px; flex-shrink:0; }
+.tb-btn {
+    padding:7px 14px; border:1px solid var(--border); border-radius:7px;
+    background:rgba(255,255,255,0.06); color:#e2e8f0; font-size:12px; font-weight:600;
+    cursor:pointer; transition:all 0.18s; white-space:nowrap; flex-shrink:0;
+}
+.tb-btn:hover { background:rgba(255,255,255,0.16); border-color:rgba(255,255,255,0.3); }
+.tb-btn.green { background:#16a34a; color:#fff; border-color:#22c55e; }
+.tb-btn.green:hover { background:#15803d; }
+.tb-btn.red { background:#b91c1c; color:#fff; border-color:#ef4444; }
+.tb-btn.red:hover { background:#991b1b; }
+.tb-sep { width:1px; height:22px; background:var(--border); margin:0 4px; flex-shrink:0; }
+
+#statusBar {
+    position:fixed; bottom:18px; left:50%; transform:translateX(-50%); z-index:100;
+    background:var(--panel-bg); border:1px solid rgba(59,130,246,0.4); border-radius:30px;
+    padding:10px 26px; font-size:13px; font-weight:600; color:#cbd5e1;
+    box-shadow:0 8px 24px rgba(0,0,0,0.5); white-space:nowrap;
+}
+.hint { position:fixed; bottom:18px; right:18px; color:rgba(255,255,255,0.65); font-size:11px; z-index:90; text-align:right; line-height:1.6; }

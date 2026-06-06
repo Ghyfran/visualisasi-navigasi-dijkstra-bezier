@@ -25,16 +25,21 @@ class VehicleAnimation {
     return this.routeIsReady();
   }
   startTrack(){
+    console.log('[VehicleAnimation] startTrack called', { startId: this.app.startId, endId: this.app.endId });
     if(!this.app.startId || !this.app.endId){
       this.app.msg("Pilih titik awal dan titik tujuan dulu.");
+      console.log('[VehicleAnimation] aborted: missing endpoints');
       return;
     }
     if(!this.ensureRoute()){
       this.app.msg("Tidak ada rute yang bisa dilalui.");
+      console.log('[VehicleAnimation] aborted: ensureRoute failed');
       return;
     }
     const result=this.app.result;
+    console.log('[VehicleAnimation] route', { pathLen: result?.path?.length, routePtsLen: result?.routePoints?.length });
     const track=this.pathHelper.buildTrack(result.path,result.routePoints);
+    console.log('[VehicleAnimation] built track', { total: track?.total, samples: track?.samples?.length });
     const duration=Math.max(4200,track.total*10.5);
     const firstSample=this.pathHelper.sampleTrack(track,0);
     if(this.vehicle instanceof Vehicle){
